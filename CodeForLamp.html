@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Turn on the light</title>
+</head>
+<body>
+<script>
+    class Battery {
+        energy;
+        constructor(energy) {
+            this.energy = energy;
+        }
+        getEnergy(){
+            return this.energy;
+        }
+        getDepleting(){
+            if(this.energy>0){
+                this.energy--;
+                return this.energy;
+            }
+        }
+        getCharging(){
+            this.energy++
+            return this.energy;
+        }
+    }
+    class FlashLamp {
+        battery;
+        status = false;
+        constructor(){
+            this.battery = new Battery(100)
+        }
+        
+        getBatteryInfo(){
+            return this.battery.energy
+        }
+        turnOn(){
+            this.status = true
+            this.battery.getDepleting()
+        }
+        charging(){
+            this.battery.getCharging()
+        }
+    }
+    let lamp = new FlashLamp();
+    lamp.turnOn()
+    lamp.turnOn()
+    lamp.turnOn()
+    lamp.turnOn()
+    lamp.charging()
+    console.log(lamp.getBatteryInfo())
+</script>
+</body>
+</html>
